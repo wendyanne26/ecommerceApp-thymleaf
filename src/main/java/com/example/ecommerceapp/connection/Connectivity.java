@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connectivity {
-    private static Connection dBCon;
+    private static final Connection dBCon;
     private static String userName = "root";
     private static String password = "wendy2580";
     private static String url = "jdbc:mysql://localhost:3306/aplication";
@@ -15,9 +15,7 @@ static{
     try{
         Class.forName(className);
         dBCon = DriverManager.getConnection(url, userName, password);
-    } catch (ClassNotFoundException e) {
-        throw new RuntimeException(e);
-    } catch (SQLException e) {
+    } catch (ClassNotFoundException | SQLException e) {
         throw new RuntimeException(e);
     }
 }

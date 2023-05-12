@@ -15,8 +15,8 @@ public class ProductDao {
         List<Product> products = new ArrayList<>();
         Product p;
         String query = "SELECT * FROM store_products";
-        PreparedStatement stmt = con.prepareStatement(query);
-        ResultSet sets = stmt.executeQuery();
+        statement = con.prepareStatement(query);
+        ResultSet sets = statement.executeQuery();
         while(sets.next()){
             p = new Product(sets.getString("product_name"), sets.getString("product_category"), sets.getInt("product_quantity"), sets.getDouble("product_price"), sets.getString("product_img"));
             products.add(p);

@@ -86,7 +86,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="#">My Cart</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewCart">My Cart</a></li>
             <li><a href="#">Search Product</a></li>
             <li><a href="LogoutServlet">Logout</a></li>
         </ul>
@@ -104,8 +104,10 @@
             <h3><%=p.getProductName()%></h3>
             <img src="Images/<%=p.getProductImage()%>" alt="Product 1">
             <p>$<%=p.getPrice()%></p>
-            <button class="add-to-wishlist">Add to Wishlist</button>
-            <button class="add-to-cart">Add to Cart</button>
+            <form method="post" action="addCart">
+                <input type="hidden" name="product_name" value="<%=p.getProductName()%>">
+                <input type="submit" class="add-to-cart" value="Add to Cart">
+            </form>
         </li>
        <%
            }
